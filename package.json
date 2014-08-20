@@ -4,22 +4,28 @@
   "version": "0.4.0",
   "private": false,
   "author": "Linnovate <mean@linnovate.net>",
-  "contributors": [{
-    "name": "Lior Kesos",
-    "mail": "lior@linnovate.net"
-  }, {
-    "name": "Yonatan Ellman",
-    "mail": "yonatan@linnovate.net"
-  }, {
-    "name": "Drew Fyock",
-    "mail": "drew@steelbisondev.com"
-  }, {
-    "name": "Ehud Shahak",
-    "mail": "ehud@linnovate.net"
-  }, {
-    "name": "Amos Haviv",
-    "mail": "mail@amoshaviv.com"
-  }],
+  "contributors": [
+    {
+      "name": "Lior Kesos",
+      "mail": "lior@linnovate.net"
+    },
+    {
+      "name": "Yonatan Ellman",
+      "mail": "yonatan@linnovate.net"
+    },
+    {
+      "name": "Drew Fyock",
+      "mail": "drew@steelbisondev.com"
+    },
+    {
+      "name": "Ehud Shahak",
+      "mail": "ehud@linnovate.net"
+    },
+    {
+      "name": "Amos Haviv",
+      "mail": "mail@amoshaviv.com"
+    }
+  ],
   "mean": "0.4.0",
   "repository": {
     "type": "git",
@@ -94,6 +100,7 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-requirejs": "^0.2.1",
     "karma-script-launcher": "^0.1.0",
+    "mongoose-fakery": "^0.1.7",
     "requirejs": "^2.1.11",
     "should": "3.3.1",
     "supertest": "0.11.0"
