@@ -22,27 +22,24 @@ var PostSchema = new Schema({
   wall: {
     type: Schema.ObjectId,
     ref: 'Wall'
+  },
+  content: {
+    type: String,
+    required: true,
+    trim: true
   }
 });
 
-/**
- * Validations
- */
-//ArticleSchema.path('title').validate(function(title) {
-  //return !!title;
-//}, 'Title cannot be blank');
+//Validations
+PostSchema.path('content').validate(function(content) {
+  return !!content;
+}, 'Content cannot be blank');
 
-//ArticleSchema.path('content').validate(function(content) {
-  //return !!content;
-//}, 'Content cannot be blank');
-
-/**
- * Statics
- */
-//ArticleSchema.statics.load = function(id, cb) {
-  //this.findOne({
-    //_id: id
-  //}).populate('user', 'name username').exec(cb);
-//};
+//Statics
+PostSchema.statics.load = function(id, cb) {
+  this.findOne({
+    _id: id
+  }).populate('user', 'name username').exec(cb);
+};
 
 mongoose.model('Post', PostSchema);
