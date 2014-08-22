@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.post-announcements').factory('PostAnnouncements', ['$resource', function($resource) {
+angular.module('mean.post-announcements').factory('Posts', ['$resource', function($resource) {
 
     return $resource('posts/:postId', {
       postId: '@_id'

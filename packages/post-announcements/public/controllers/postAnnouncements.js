@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.post-announcements').controller('PostAnnouncementsController', ['$scope', '$stateParams', '$location', 'Global', 'PostAnnouncements',
-  function($scope, $stateParams, $location, Global, PostAnnouncements) {
+angular.module('mean.post-announcements').controller('PostsController', ['$scope', '$stateParams', '$location', 'Global', 'Posts',
+  function($scope, $stateParams, $location, Global, Posts) {
     $scope.global = Global;
     $scope.package = {
       name: 'post-announcements'

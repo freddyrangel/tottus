@@ -20,7 +20,7 @@ PostAnnouncements.register(function(app, auth, database) {
   PostAnnouncements.menus.add({
     roles: ['authenticated'],
     title: 'Create New Post',
-    link: 'postAnnouncements example page'
+    link: 'create post'
     //menu: 'main'
   });
 
