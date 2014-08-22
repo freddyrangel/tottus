@@ -21,7 +21,11 @@ PostAnnouncements.register(function(app, auth, database) {
     roles: ['authenticated'],
     title: 'Create New Post',
     link: 'create post'
-    //menu: 'main'
+  });
+  PostAnnouncements.menus.add({
+    roles: ['authenticated'],
+    title: 'All Posts',
+    link: 'all posts'
   });
 
   /**
