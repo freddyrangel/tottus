@@ -18,10 +18,10 @@ PostAnnouncements.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   PostAnnouncements.menus.add({
-    title: 'postAnnouncements example page',
-    link: 'postAnnouncements example page',
     roles: ['authenticated'],
-    menu: 'main'
+    title: 'Create New Post',
+    link: 'postAnnouncements example page'
+    //menu: 'main'
   });
 
   /**

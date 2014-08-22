@@ -6,6 +6,7 @@
 var should = require('should'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
+  Wall = mongoose.model('Wall'),
   Post = mongoose.model('Post');
 
 /**
@@ -13,6 +14,7 @@ var should = require('should'),
  */
 var user;
 var post;
+var wall;
 
 /**
  * Test Suites
@@ -27,11 +29,19 @@ describe('<Unit Test>', function() {
         password: 'password'
       });
 
+      wall = new Wall({
+        user: user
+      });
+
+      wall.save();
+
       user.save(function() {
+
         post = new Post({
           title: 'Post Title',
           content: 'Post Content',
-          user: user
+          user: user,
+          wall: wall
         });
 
         done();
@@ -44,7 +54,22 @@ describe('<Unit Test>', function() {
           should.not.exist(err);
           post.content.should.equal('Post Content');
           post.user.should.not.have.length(0);
+          post.wall.should.not.have.length(0);
           post.created.should.not.have.length(0);
+          done();
+        });
+      });
+
+      it('should return the right user', function(done) {
+        return post.save(function(err) {
+          post.user.should.equal(user._doc._id);
+          done();
+        });
+      });
+
+      it('should return the right wall', function(done) {
+        return post.save(function(err) {
+          post.wall.should.equal(wall._doc._id);
           done();
         });
       });
@@ -67,10 +92,19 @@ describe('<Unit Test>', function() {
         });
       });
 
+      it('should be able to show an error when try to save without wall', function(done) {
+        post.wall = {};
+
+        return post.save(function(err) {
+          should.exist(err);
+          done();
+        });
+      });
     });
 
     afterEach(function(done) {
       post.remove();
+      wall.remove();
       user.remove();
       done();
     });
