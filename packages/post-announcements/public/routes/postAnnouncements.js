@@ -2,9 +2,54 @@
 
 angular.module('mean.post-announcements').config(['$stateProvider',
   function($stateProvider) {
-    $stateProvider.state('postAnnouncements example page', {
-      url: '/postAnnouncements/example',
-      templateUrl: 'post-announcements/views/index.html'
+    var checkLoggedin = function($q, $timeout, $http, $location) {
+    // Initialize a new promise
+    var deferred = $q.defer();
+
+    // Make an AJAX call to check if the user is logged in
+    $http.get('/loggedin').success(function(user) {
+      // Authenticated
+      if (user !== '0') $timeout(deferred.resolve);
+
+      // Not Authenticated
+      else {
+        $timeout(deferred.reject);
+        $location.url('/login');
+      }
     });
+
+    return deferred.promise;
+    };
+
+    // states for my app
+    $stateProvider
+      .state('all posts', {
+        url: '/posts',
+        templateUrl: 'posts/views/list.html',
+        resolve: {
+          loggedin: checkLoggedin
+        }
+      })
+      .state('create post', {
+        url: '/posts/create',
+        templateUrl: 'posts/views/create.html',
+        resolve: {
+          loggedin: checkLoggedin
+        }
+      })
+      .state('edit post', {
+        url: '/posts/:postId/edit',
+        templateUrl: 'posts/views/edit.html',
+        resolve: {
+          loggedin: checkLoggedin
+        }
+      })
+      .state('post by id', {
+        url: '/posts/:postId',
+        templateUrl: 'posts/views/view.html',
+        resolve: {
+          loggedin: checkLoggedin
+        }
+      });
   }
 ]);
